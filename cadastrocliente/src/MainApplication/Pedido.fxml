@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:controller="Controller.FXMLDocumentController" 
+            xmlns:fx="http://javafx.com/fxml" prefHeight="700" prefWidth="700" >
+    
+    <Label text="PEDIDO" prefHeight="20" prefWidth="80"
+           layoutX="350" layoutY="10"     /> 
+    
+    <Label text="Local Contrato:" prefHeight="20" prefWidth="150" 
+           layoutX="25" layoutY="60"  /> 
+    <TextField fx:id="tfLocal" prefHeight="18" prefWidth="150" 
+               layoutX="105" layoutY="62"    />    
+    
+           
+    <Label text="Data Pedido: " prefHeight="20" prefWidth="150" 
+           layoutX="25" layoutY="85"  />
+    
+    <TextField fx:id="tfData" prefHeight="18" prefWidth="150" 
+               layoutX="105" layoutY="87"    />
+
+    <Label text="Cliente: " prefHeight="20" prefWidth="150" 
+           layoutX="25" layoutY="110"  />
+    <ComboBox fx:id="cbCliente"   prefHeight="18" prefWidth="150"   
+        layoutX="105" layoutY="111"  />
+    
+    
+    <Label text="Cerimonial " prefHeight="20" prefWidth="150" 
+           layoutX="25" layoutY="135"  />
+    
+    <TextField fx:id="tfCerimonial" prefHeight="18" prefWidth="150" 
+               layoutX="105" layoutY="137"    />
+    
+    <Label text="Tipo de Evento: " prefHeight="20" prefWidth="150" 
+           layoutX="25" layoutY="160"  />
+    <ComboBox fx:id="cbTipoEvento"   prefHeight="18" prefWidth="150"   
+        layoutX="105" layoutY="162"  />
+</AnchorPane>
