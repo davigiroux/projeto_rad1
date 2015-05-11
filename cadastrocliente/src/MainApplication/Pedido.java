@@ -23,8 +23,8 @@ public class Pedido extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("Pedido.fxml"));
         
         Scene scene = new Scene(root);
-        
-        stage.setScene(scene);
+        stage.setScene(scene);  
+        scene.getStylesheets().add(Pedido.class.getResource("Pedido.css").toExternalForm());
         stage.show();
         
     }

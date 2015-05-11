@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 public class ConexaoUtil {
 
     public static Connection getConnection() {
-        String url = "jdbc:postgresql://localhost:5432/clientesdb";
+        String url = "jdbc:postgresql://localhost:5432/lm_bemcasado";
         String usuario = "postgres";
         String senha = "postgres";
         try {
