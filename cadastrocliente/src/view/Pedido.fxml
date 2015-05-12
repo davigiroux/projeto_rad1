@@ -6,9 +6,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="700" prefWidth="700" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FXMLDocumentController">
+<AnchorPane prefHeight="700" prefWidth="700" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.PedidoController">
    <children>
-      <AnchorPane layoutX="13.0" layoutY="14.0" prefHeight="656.0" prefWidth="648.0">
+      <AnchorPane layoutX="26.0" layoutY="22.0" prefHeight="656.0" prefWidth="648.0">
          <children>
             <Label layoutX="269.0" layoutY="29.0" text="PEDIDO" />
             <GridPane layoutX="33.0" layoutY="57.0">
@@ -31,15 +31,15 @@
                   <Label text="Cliente:" GridPane.rowIndex="2" />
                   <Label text="Cerimonial:" GridPane.rowIndex="3" />
                   <Label text="Data Evento:" GridPane.rowIndex="4" />
-                  <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <TextField GridPane.columnIndex="1" />
+                  <DatePicker fx:id="dataPedidoDP" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <DatePicker fx:id="dataEventoDP" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <ComboBox fx:id="clienteCB" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="cerimonialTF" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="localContratoTF" GridPane.columnIndex="1" />
                   <Label text="Tipo evento:" GridPane.rowIndex="5" />
                   <Label text="Hora:" GridPane.rowIndex="6" />
-                  <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <ComboBox fx:id="tipoEventoCB" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <TextField fx:id="horaTF" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                </children>
             </GridPane>
             <GridPane layoutX="33.0" layoutY="278.0" prefHeight="30.0" prefWidth="285.0">
@@ -51,8 +51,8 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" text="Salvar" />
-                  <Button mnemonicParsing="false" text="Limpar" GridPane.columnIndex="1" />
+                  <Button fx:id="salvarBT" mnemonicParsing="false" onAction="#aoClicarBtSalvar" text="Salvar" />
+                  <Button fx:id="limparBT" mnemonicParsing="false" text="Limpar" GridPane.columnIndex="1" />
                </children>
             </GridPane>
             <TableView layoutX="92.0" layoutY="488.0" prefHeight="154.0" prefWidth="226.0">
@@ -82,7 +82,7 @@
                </children>
             </GridPane>
             <Button layoutX="269.0" layoutY="391.0" mnemonicParsing="false" text="Adicionar Item" />
-            <Label  layoutX="349.0" layoutY="154.0" text="Salvo com sucesso!" visible="false" />
+            <Label fx:id="salvoLb" layoutX="349.0" layoutY="154.0" text="Salvo com sucesso!" visible="false" />
             <Separator layoutY="328.0" prefHeight="17.0" prefWidth="647.0" />
          </children>
       </AnchorPane>
