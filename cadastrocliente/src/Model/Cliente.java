@@ -11,9 +11,18 @@ package Model;
  * @author rf3020
  */
 public class Cliente {
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
     
     private Integer id;
     private String nome;
+    private String email;
     private String fone;
 
     public Integer getId() {
@@ -40,5 +49,8 @@ public class Cliente {
         this.fone = fone;
     }
     
-    
+    @Override
+    public String toString(){
+        return this.getNome();
+    }
 }

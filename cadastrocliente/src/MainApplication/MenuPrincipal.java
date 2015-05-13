@@ -5,16 +5,15 @@
  */
 package MainApplication;
 
-import Model.Pedido;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import view.PedidoController;
 
 /**
  *
@@ -22,21 +21,40 @@ import view.PedidoController;
  */
 public class MenuPrincipal extends Application {
 
+    private Stage telaPrincipal = new Stage();
+    private Parent root;
+
     @FXML
-    public void aoClicarBtPedido() throws Exception{
-        PedidoController novaTela = new PedidoController();
-        novaTela.start(new Stage());
-        
-    }
-    @Override
-    public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("MenuPrincipal.fxml"));
+    public void aoClicarBtPedido(ActionEvent event) throws Exception {
+
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("/view/Pedido.fxml"));
+
         Scene scene = new Scene(root);
         stage.setScene(scene);
-
         stage.show();
+    }
+
+    public Stage getTelaPrincipal() {
+        return telaPrincipal;
+    }
+
+    public void setTelaPrincipal(Stage telaPrincipal) {
+        this.telaPrincipal = telaPrincipal;
+    }
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        setTelaPrincipal(stage);
+        Parent root = FXMLLoader.load(getClass().getResource("MenuPrincipal.fxml"));
+        Scene scene = new Scene(root);
+        telaPrincipal.setScene(scene);
+
+        telaPrincipal.show();
 
     }
+
     /**
      * The main() method is ignored in correctly deployed JavaFX application.
      * main() serves only as fallback in case the application can not be

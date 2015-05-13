@@ -16,7 +16,25 @@ public class Pedido {
     private String cerimonial;
     private String local_evento;
     private String hora_evento;
-    private String endereco;
+    private String observacao;
+    private int id_cliente;
+    private int id_tipo_evento;
+
+    public int getId_tipo_evento() {
+        return id_tipo_evento;
+    }
+
+    public void setId_tipo_evento(int id_tipo_evento) {
+        this.id_tipo_evento = id_tipo_evento;
+    }
+
+    public int getId_cliente() {
+        return id_cliente;
+    }
+
+    public void setId_cliente(int id_cliente) {
+        this.id_cliente = id_cliente;
+    }
 
     public int getId() {
         return id;
@@ -66,13 +84,15 @@ public class Pedido {
         this.hora_evento = hora_evento;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getObservacao() {
+        return observacao;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
     }
+
+    
     
     
 }

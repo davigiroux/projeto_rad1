@@ -28,7 +28,7 @@ public class PedidoDAO {
    
     
    public void salvar(Pedido pedido) {
-       String sql ="insert  into pedido (cerimonial,local_evento, data_pedido, data_evento, hora_evento) values (?,?,?,?,?)";
+       String sql ="insert  into pedido (cerimonial,local_evento, data_pedido, data_evento, hora_evento, id_cliente, observacao, id_tipo_evento) values (?,?,?,?,?,?,?,?)";
        try {
            PreparedStatement preparadorSQL = conexao.prepareStatement(sql);
            preparadorSQL.setString(1, pedido.getCerimonial());
@@ -36,6 +36,9 @@ public class PedidoDAO {
            preparadorSQL.setString(3, pedido.getData_pedido());
            preparadorSQL.setString(4, pedido.getData_evento());
            preparadorSQL.setString(5, pedido.getHora_evento());
+           preparadorSQL.setInt(6, pedido.getId_cliente());
+           preparadorSQL.setString(7, pedido.getObservacao());
+           preparadorSQL.setInt(8, pedido.getId_tipo_evento());
            preparadorSQL.execute();
            preparadorSQL.close();
        } catch (SQLException ex) {

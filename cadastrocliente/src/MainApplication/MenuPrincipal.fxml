@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainApplication.MenuPrincipal">
+<AnchorPane id="AnchorPane" prefHeight="355.0" prefWidth="115.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainApplication.MenuPrincipal">
    <children>
       <AnchorPane layoutX="14.0" layoutY="8.0" prefHeight="400.0" prefWidth="600.0" stylesheets="@../view/Pedido.css">
          <children>

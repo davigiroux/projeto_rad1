@@ -31,7 +31,10 @@ public class ClienteService {
         if (cliente.getFone().isEmpty()) {
             throw new ServiceException("Campo fone é obrigatório!");
         }
-
+        
+        if (cliente.getEmail().isEmpty()) {
+            throw new ServiceException("Campo e-mail é obrigatório!");
+        }
         clienteDAO.salvar(cliente);
 
     }

@@ -5,7 +5,7 @@
  */
 package DAO;
 
-import Model.Cliente;
+import Model.Produto;
 import Util.ConexaoUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,18 +18,18 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author rf3020
+ * @author Davi
  */
-public class ClienteDAO {
 
+public class ProdutoDAO {
     Connection conexao;
-
-    public ClienteDAO() {
+    
+    public ProdutoDAO() {
         conexao = ConexaoUtil.getConnection();
     }
-
-    public Cliente buscarPorId(Integer id) {
-        String sql = "select * from cliente where id=?";
+    
+    public Produto buscarPorId(Integer id) {
+        String sql = "select * from produto where idProduto=?";
         try {
             PreparedStatement preparadorSQL = conexao.prepareStatement(sql);
             preparadorSQL.setInt(1, id);
@@ -37,94 +37,93 @@ public class ClienteDAO {
             ResultSet resultado = preparadorSQL.executeQuery();
             if (resultado.next()) {
                 //Instancia de cliente
-                Cliente cli = new Cliente();
+                Produto pro = new Produto();
 
-                //Atribuindo dados do resultado no objeto cliente
-                cli.setId(id);
-                cli.setNome(resultado.getString("nome"));
-                cli.setFone(resultado.getString("fone"));
+                //Atribuindo dados do resultado no objeto produto
+                pro.setId_produto(id);
+                pro.setDescricao(resultado.getString("descricao"));
+                pro.setValor(resultado.getDouble("valor"));
                 preparadorSQL.close();
-                return cli;
+                return pro;
             } else {
                 return null;
             }
         } catch (SQLException ex) {
 
-            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
 
     }
 
-    public List<Cliente> buscarTodos() {
-        String sql = "select * from cliente order by id_cliente";
+    public List<Produto> buscarTodos() {
+        String sql = "select * from produto order by id_produto";
         try {
             PreparedStatement preparadorSQL = conexao.prepareStatement(sql);
             //Armazenando Resultado da consulta
             ResultSet resultado = preparadorSQL.executeQuery();
-            List<Cliente> lista = new ArrayList<>();
+            List<Produto> lista = new ArrayList<>();
             while (resultado.next()) {
                 //Instancia de cliente
-                Cliente cli = new Cliente();
+                Produto pro = new Produto();
 
-                //Atribuindo dados do resultado no objeto cliente
-                cli.setId(resultado.getInt("id_cliente"));
-                cli.setNome(resultado.getString("nome"));
-                cli.setFone(resultado.getString("telefone"));
-                //Adicionando cliente na lista
-                lista.add(cli);
+                //Atribuindo dados do resultado no objeto produto
+                pro.setId_produto(resultado.getInt("id_produto"));
+                pro.setDescricao(resultado.getString("descricao"));
+                pro.setValor(resultado.getDouble("valor"));
+                //Adicionando produto na lista
+                lista.add(pro);
             }
             
             preparadorSQL.close();
             return lista;
         } catch (SQLException ex) {
 
-            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
 
     }
 
-    public void salvar(Cliente cliente) {
-        if (cliente.getId() == null) {
-            cadastrar(cliente);
+    public void salvar(Produto produto) {
+        if (produto.getId_produto()== 0) {
+            cadastrar(produto);
         } else {
-            alterar(cliente);
+            alterar(produto);
         }
     }
 
-    public void cadastrar(Cliente cliente) {
-        String sql = "insert  into cliente (nome,telefone, email) values (?,?, ?)";
+    public void cadastrar(Produto produto) {
+        String sql = "insert  into produto (descricao, valor) values (?,?)";
         try {
             PreparedStatement preparadorSQL = conexao.prepareStatement(sql);
-            preparadorSQL.setString(1, cliente.getNome());
-            preparadorSQL.setString(2, cliente.getFone());
-            preparadorSQL.setString(3, cliente.getEmail());
+            preparadorSQL.setString(1, produto.getDescricao());
+            preparadorSQL.setDouble(2, produto.getValor());
             preparadorSQL.execute();
             preparadorSQL.close();
         } catch (SQLException ex) {
-            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
 
-    public void alterar(Cliente cliente) {
-        String sql = "update cliente set nome=? ,fone=? where id=?";
+    public void alterar(Produto produto) {
+        String sql = "update produto set descricao=? ,valor=? where id_produto=?";
         try {
             PreparedStatement preparadorSQL = conexao.prepareStatement(sql);
-            preparadorSQL.setString(1, cliente.getNome());
-            preparadorSQL.setString(2, cliente.getFone());
-            preparadorSQL.setInt(3, cliente.getId());
+            preparadorSQL.setString(1, produto.getDescricao());
+            preparadorSQL.setDouble(2, produto.getValor());
+            preparadorSQL.setInt(3, produto.getId_produto());
             preparadorSQL.execute();
             preparadorSQL.close();
         } catch (SQLException ex) {
-            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
 
     public void excluir(Integer id) {
-        String sql = "delete from cliente where id=?";
+        String sql = "delete from produto where id_produto=?";
 
         try {
             PreparedStatement preparadorSQL = conexao.prepareStatement(sql);
@@ -133,8 +132,7 @@ public class ClienteDAO {
             preparadorSQL.execute();
             preparadorSQL.close();
         } catch (SQLException ex) {
-            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
 }

@@ -46,6 +46,7 @@ public class PedidoService {
         if (pedido.getCerimonial().isEmpty()) {
             throw new ServiceException("Campo Cerimonial é obrigatório!");
         }
+        
 
         pedidoDAO.salvar(pedido);
 
